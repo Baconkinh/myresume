@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume | Computer Engineering Portfolio</title>
+    <title>Atchara Dangdee | Resume Portfolio</title>
     <!-- Importing a cute, rounded font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-pastel: #fff0f5;      /* Soft Lavender Blush */
             --card-white: #ffffff;
             --text-main: #5c4b51;      /* Soft Brown/Grey */
+            --text-muted: #8b7d82;     /* Lighter Brown/Grey for secondary text */
             --pastel-pink: #ffb7b2;    /* Soft Pink */
             --pastel-blue: #a2d2ff;    /* Baby Blue */
             --pastel-yellow: #fcf6bd;  /* Butter Yellow */
             --pastel-green: #b5ead7;   /* Mint Green */
+            --pastel-purple: #cda434;  /* Accent color */
         }
 
         body {
@@ -34,23 +37,25 @@
         header {
             /* Peach to Pink gradient */
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 3rem;
             text-align: center;
             border-bottom: 6px dashed #ffffff;
             border-radius: 0 0 40px 40px;
             box-shadow: 0 10px 20px rgba(255, 154, 158, 0.2);
+            position: relative;
         }
 
         h1 {
             color: #ffffff;
             margin: 0;
-            font-size: 3.5rem;
-            text-shadow: 4px 4px 0px rgba(255, 154, 158, 0.6);
+            font-size: 3rem;
+            text-shadow: 3px 3px 0px rgba(255, 154, 158, 0.6);
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #ffffff;
             font-weight: 800;
             margin-top: 0.8rem;
@@ -59,11 +64,42 @@
             padding: 8px 20px;
             border-radius: 30px;
         }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .contact-info div {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-info a {
+            color: white;
+            border: none;
+        }
+        
+        .contact-info a:hover {
+            color: var(--text-main);
+        }
 
         .container {
-            max-width: 800px;
-            margin: 2rem auto;
+            max-width: 900px;
+            margin: -2rem auto 2rem; /* Pull up over header slightly */
             padding: 0 2rem;
+            position: relative;
+            z-index: 10;
         }
 
         .section-card {
@@ -88,7 +124,7 @@
         }
 
         .section-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-5px);
             border-color: var(--pastel-pink);
             box-shadow: 0 18px 35px rgba(255, 183, 178, 0.4);
         }
@@ -96,59 +132,118 @@
         h2 {
             color: #ff8fab;
             margin-top: 0;
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            border-bottom: 2px dashed var(--pastel-pink);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         h3 {
             color: #72b2d6;
             margin-bottom: 0.2rem;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .date-badge {
+            font-size: 0.85rem;
+            background-color: var(--pastel-blue);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .role {
+            font-size: 1rem;
+            color: #a09298;
+            margin-top: 0;
+            font-weight: 700;
+        }
+        
+        ul.cute-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul.cute-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+        
+        ul.cute-list li::before {
+            content: '✿';
+            position: absolute;
+            left: 0;
+            color: var(--pastel-pink);
+            font-size: 1.2rem;
+            top: -2px;
+        }
+
+        .skills-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills-category-title {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
         }
 
         /* 3D Bouncy Tags */
         .tag {
             background-color: var(--pastel-pink);
             color: #fff;
-            padding: 0.6rem 1.2rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            font-size: 1.05rem;
-            font-weight: 800;
-            box-shadow: 0 6px 0 rgba(255, 154, 158, 0.5);
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 0 rgba(255, 154, 158, 0.5);
             transition: transform 0.1s, box-shadow 0.1s;
             cursor: default;
         }
 
         .tag:active {
-            transform: translateY(6px);
+            transform: translateY(4px);
             box-shadow: 0 0 0 rgba(255, 154, 158, 0.5);
         }
 
         .tag.yellow {
             background-color: var(--pastel-yellow);
             color: #c4a123;
-            box-shadow: 0 6px 0 rgba(235, 203, 139, 0.5);
+            box-shadow: 0 4px 0 rgba(235, 203, 139, 0.5);
         }
 
         .tag.blue {
             background-color: var(--pastel-blue);
             color: #fff;
-            box-shadow: 0 6px 0 rgba(114, 178, 214, 0.5);
+            box-shadow: 0 4px 0 rgba(114, 178, 214, 0.5);
         }
         
         .tag.green {
             background-color: var(--pastel-green);
             color: #4a9e80;
-            box-shadow: 0 6px 0 rgba(135, 204, 179, 0.5);
+            box-shadow: 0 4px 0 rgba(135, 204, 179, 0.5);
+        }
+        
+        .tag.purple {
+            background-color: #d8b4e2;
+            color: #fff;
+            box-shadow: 0 4px 0 #bca0c4;
         }
 
         a {
@@ -171,50 +266,156 @@
             font-weight: 800;
             font-size: 1.1rem;
         }
+        
+        @media (max-width: 768px) {
+            h3 {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>[Your Name]</h1>
-        <p class="subtitle">🌸 Computer Engineering Student 🌸</p>
+        <h1>Atchara Dangdee</h1>
+        <p class="subtitle">🌸 Cybersecurity Analyst & Computer Engineering Student 🌸</p>
+        
+        <div class="contact-info">
+            <div><i class="fas fa-map-marker-alt"></i> Nakhonsawan, 60000</div>
+            <div><i class="fas fa-phone"></i> 064-362-0523</div>
+            <div><i class="fas fa-envelope"></i> myidisbacon2548@gmail.com</div>
+            <div><i class="fab fa-github"></i> <a href="https://github.com/Baconkinh" target="_blank" style="border:none;">github.com/Baconkinh</a></div>
+        </div>
     </header>
 
     <div class="container">
         
-        <section class="section-card" id="about">
-            <h2>🎀 About Me</h2>
-            <p>I am a Computer Engineering student at Kasetsart University! I love writing clean code, exploring machine learning concepts, and solving complex problems through collaborative development. 🍰</p>
+        <section class="section-card" id="objective">
+            <h2>🎯 Job Objective</h2>
+            <ul class="cute-list">
+                <li>Detail-oriented student seeking a Cybersecurity Analyst role to utilize strong problem-solving skills in vulnerability management, packet analysis, and defensive security operations.</li>
+                <li>Seeking an entry-level position in Cybersecurity Analyst retailing.</li>
+            </ul>
+        </section>
+        
+        <section class="section-card" id="education">
+            <h2>🎓 Education</h2>
+            <h3>
+                <span>Bachelor of Computer Engineering</span>
+                <span class="date-badge">Expected 2027</span>
+            </h3>
+            <p class="role">Kasetsart University 📚</p>
+            <p>Aug 2016 - Oct 2019 (Previous Studies)</p>
+        </section>
+
+        <section class="section-card" id="experience">
+            <h2>🌷 Work Experience</h2>
+            
+            <h3>
+                <span>Teaching Assistant</span>
+                <span class="date-badge">2025 - Present</span>
+            </h3>
+            <p class="role">Essential Computer Tools and Skills | Kasetsart University, Sriracha, Chonburi 🏫</p>
+            <ul class="cute-list">
+                <li>Served as a teaching assistant for 3 consecutive semesters across 4 sections, acting as the primary liaison between professors and students.</li>
+                <li>Provided on-site IT support, troubleshooting technical issues and guiding students through software applications.</li>
+                <li>Managed administrative workflows, including exam proctoring and organizing course data efficiently using MS Excel, Word, and Google Sheets.</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">
+                <span>Robotics Instructor</span>
+                <span class="date-badge">Sep 2024 - Jun 2025</span>
+            </h3>
+            <p class="role">Quantummodus - Sriracha, Chonburi 🤖</p>
+            <ul class="cute-list">
+                <li>Instructed children in fundamental robotics and programming concepts using LEGO education boards.</li>
+                <li>Designed and guided hands-on activities to teach basic movement logic (e.g., forward/backward commands), simplifying complex coding concepts for young learners.</li>
+                <li>Fostered logical thinking, problem-solving skills, and a basic understanding of hardware-software integration.</li>
+            </ul>
         </section>
 
         <section class="section-card" id="skills">
             <h2>🎨 Technical Skills</h2>
-            <div class="skills-grid">
-                <span class="tag">HTML & CSS</span>
-                <span class="tag blue">Python</span>
-                <span class="tag yellow">GitHub</span>
-                <span class="tag green">Weights & Biases</span>
-                <span class="tag blue">C++</span>
-                <span class="tag yellow">Figma</span>
+            
+            <div class="skills-category">
+                <div class="skills-category-title">Soft Skills</div>
+                <div class="skills-grid">
+                    <span class="tag">Leadership</span>
+                    <span class="tag">Problem Solving</span>
+                    <span class="tag">Logical Thinking</span>
+                    <span class="tag">Team Collaboration</span>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skills-category-title">Programming & Backend</div>
+                <div class="skills-grid">
+                    <span class="tag blue">C++</span>
+                    <span class="tag blue">Python</span>
+                    <span class="tag blue">Java</span>
+                    <span class="tag blue">JavaScript</span>
+                    <span class="tag blue">Flask</span>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skills-category-title">Network & Security</div>
+                <div class="skills-grid">
+                    <span class="tag purple">Wireshark</span>
+                    <span class="tag purple">GNS3</span>
+                    <span class="tag purple">Cisco CLI</span>
+                    <span class="tag purple">OWASP ZAP</span>
+                    <span class="tag purple">Packet Analysis</span>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skills-category-title">Databases & Tools</div>
+                <div class="skills-grid">
+                    <span class="tag green">MySQL</span>
+                    <span class="tag green">MongoDB</span>
+                    <span class="tag green">MariaDB</span>
+                    <span class="tag yellow">Microsoft Office</span>
+                    <span class="tag yellow">Canva</span>
+                    <span class="tag yellow">Figma</span>
+                    <span class="tag yellow">Streamlit</span>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skills-category-title">Languages</div>
+                <div class="skills-grid">
+                    <span class="tag">English (Fair command)</span>
+                </div>
             </div>
         </section>
-
-        <section class="section-card" id="experience">
-            <h2>🌷 Experience & Projects</h2>
+        
+        <section class="section-card" id="achievements">
+            <h2>🏆 Achievements</h2>
             
-            <h3>BangMod Hackathon 2024</h3>
-            <p style="font-size: 1rem; color: #a09298; margin-top: 0; font-weight: 700;">Participant 🚀</p>
-            <p>Collaborated under strict time constraints to prototype, develop, and present a technical solution alongside a diverse team of developers and designers.</p>
-
-            <h3 style="margin-top: 2.5rem;">Academic Projects</h3>
-            <p style="font-size: 1rem; color: #a09298; margin-top: 0; font-weight: 700;">Kasetsart University 📚</p>
-            <p>Utilized standard version control practices and managed experiment tracking for various machine learning and software engineering assignments.</p>
+            <h3>Academic Achievements</h3>
+            <ul class="cute-list">
+                <li>Certified Unity Basic: Game Development Fundamentals (2026)</li>
+                <li>Basic Web Security Training - SECPlayground (2024)</li>
+            </ul>
+            
+            <h3 style="margin-top: 1.5rem;">Awards & Recognitions</h3>
+            <ul class="cute-list">
+                <li>National Finalist, International Collegiate Programming Contest (ICPC) 2026</li>
+                <li>Participant, BangMod Hackathon (2024) 🚀</li>
+            </ul>
         </section>
 
     </div>
 
     <footer>
-        <p>Made with 💖 | Check out my <a href="https://github.com/">GitHub</a></p>
+        <p>Made with 💖 | Check out my <a href="https://github.com/Baconkinh" target="_blank">GitHub</a></p>
     </footer>
 
 </body>
