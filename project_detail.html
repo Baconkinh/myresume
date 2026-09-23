@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament of 5 Hearts - Details</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Pastel Blue Theme Variables */
+            --bg-pastel-blue: #eef7fc;   /* Very light baby blue */
+            --dot-color: #cce3f5;        /* Slightly darker blue for dots */
+            --header-grad-1: #a1c4fd;    /* Soft blue gradient start */
+            --header-grad-2: #c2e9fb;    /* Soft blue gradient end */
+            
+            --card-white: #ffffff;
+            --text-main: #5c4b51;        /* Soft Brown/Grey for readability */
+            --text-muted: #8b7d82;
+            
+            --accent-blue: #72b2d6;      /* Primary button/accent color */
+            --accent-pink: #ffb7b2;      /* Secondary accent */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-pastel-blue);
+            /* Cute subtle polka dot pattern */
+            background-image: radial-gradient(var(--dot-color) 10%, transparent 11%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--header-grad-1) 0%, var(--header-grad-2) 100%);
+            padding: 2rem 2rem 6rem;
+            text-align: center;
+            border-bottom: 6px dashed #ffffff;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 10px 20px rgba(161, 196, 253, 0.2);
+            position: relative;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0 rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-btn:hover {
+            background: #ffffff;
+            color: var(--accent-blue);
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -4rem auto 3rem; /* Pull up over header */
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-card {
+            background-color: var(--card-white);
+            border-radius: 28px;
+            padding: 2.5rem;
+            box-shadow: 0 12px 24px rgba(161, 196, 253, 0.25);
+            border: 4px solid var(--bg-pastel-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .section-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 18px 35px rgba(161, 196, 253, 0.4);
+        }
+
+        .game-title {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--accent-blue);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            line-height: 1.4;
+        }
+
+        .cover-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+            border: 4px dashed var(--dot-color);
+        }
+
+        .download-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: var(--bg-pastel-blue);
+            border-radius: 20px;
+        }
+
+        .game-status-text {
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .download-btn {
+            background-color: var(--accent-blue);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 0 #5a94b5;
+            transition: transform 0.1s, box-shadow 0.1s;
+            margin-right: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 #5a94b5;
+        }
+
+        .price-text {
+            font-weight: 700;
+            color: var(--accent-pink);
+            font-size: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 15px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .gallery-main {
+            grid-column: 1;
+            grid-row: 1 / span 3;
+        }
+
+        .gallery-side {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid var(--dot-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            background-color: #f8f9fa;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-blue);
+        }
+
+        .description-area h2 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px dashed var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .cute-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .cute-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .cute-list li::before {
+            content: '☁️';
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+            top: 2px;
+        }
+
+        .metadata-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .metadata-table td {
+            padding: 10px 15px;
+            background-color: #fcfcfc;
+        }
+
+        .metadata-table tr td:first-child {
+            color: var(--text-muted);
+            width: 30%;
+            border-radius: 15px 0 0 15px;
+            border: 2px solid var(--bg-pastel-blue);
+            border-right: none;
+        }
+        
+        .metadata-table tr td:last-child {
+            border-radius: 0 15px 15px 0;
+            border: 2px solid var(--bg-pastel-blue);
+            border-left: none;
+        }
+
+        .metadata-table a {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 800;
+            border-bottom: 2px dashed var(--accent-pink);
+        }
+        
+        .metadata-table a:hover {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-main {
+                grid-row: auto;
+            }
+            .game-title {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+            .section-card {
+                padding: 1.5rem;
+            }
+            .download-btn {
+                display: block;
+                margin: 0 auto 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header area with cute gradient -->
+    <header>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Resume</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-card">
+            <!-- Game Title -->
+            <h1 class="game-title">Tournament of 5 Hearts</h1>
+            
+            <!-- Main Cover Image -->
+            <img src="real.jpg" alt="Tournament of 5 Hearts Cover" class="cover-image" onerror="this.src='https://placehold.co/800x450/eef7fc/72b2d6?text=Tournament+of+5+Hearts'">
+
+            <!-- Download Section (itch.io inspired but cute) -->
+            <div class="download-section">
+                <div class="game-status-text">🎮 A downloadable game for Windows and macOS 🌟</div>
+                <div>
+                    <a href="#" class="download-btn"><i class="fas fa-download"></i> Download Now</a>
+                    <span class="price-text">Name your own price ♡</span>
+                </div>
+            </div>
+
+            <!-- Screenshots Gallery (itch.io Layout) -->
+            <div class="gallery-grid">
+                <!-- Large main image on the left -->
+                <div class="gallery-main">
+                    <img src="https://placehold.co/500x700/eef7fc/72b2d6?text=Gameplay+Scene" alt="Gameplay 1" class="screenshot" style="height: 100%;">
+                </div>
+                
+                <!-- Stacked smaller images on the right -->
+                <div class="gallery-side">
+                    <img src="https://placehold.co/400x225/fcf6bd/72b2d6?text=Combat+System" alt="Combat Screen" class="screenshot">
+                    <img src="https://placehold.co/400x225/ffb7b2/ffffff?text=Character+Selection" alt="Character Select" class="screenshot">
+                    <img src="https://placehold.co/400x225/b5ead7/5c4b51?text=World+Map" alt="World Map" class="screenshot">
+                </div>
+            </div>
+
+            <!-- Description Area -->
+            <div class="description-area">
+                <h2><i class="fas fa-star"></i> About the Game</h2>
+                <p>
+                    <strong>Tournament of 5 Hearts</strong> is a retro-inspired, turn-based RPG built entirely in Java using the FXGL engine. 
+                    Dive into a beautifully pixelated world where you must gather the fragments of the five legendary hearts to restore balance to the realm.
+                </p>
+                <p>
+                    Engage in strategic, classic turn-based combat. Build your party, manage your resources carefully, and exploit enemy weaknesses. 
+                    With custom character creation, you can tailor your heroes to fit your playstyle.
+                </p>
+
+                <h2><i class="fas fa-magic"></i> Features</h2>
+                <ul class="cute-list">
+                    <li>Classic turn-based RPG combat system.</li>
+                    <li>Custom character creation with unique stats and abilities.</li>
+                    <li>Charming pixel-art aesthetic and atmospheric soundtrack.</li>
+                    <li>Built from scratch using Java and FXGL.</li>
+                </ul>
+
+                <!-- Metadata Table (itch.io style data, cute styling) -->
+                <table class="metadata-table">
+                    <tbody>
+                        <tr>
+                            <td>Status</td>
+                            <td>In development 🛠️</td>
+                        </tr>
+                        <tr>
+                            <td>Author</td>
+                            <td><a href="https://github.com/Baconkinh" target="_blank">Atchara Dangdee (Baconkinh)</a></td>
+                        </tr>
+                        <tr>
+                            <td>Genre</td>
+                            <td>Role Playing, Turn-based Strategy</td>
+                        </tr>
+                        <tr>
+                            <td>Tags</td>
+                            <td>2D, Pixel Art, RPG, Java, FXGL, Singleplayer</td>
+                        </tr>
+                        <tr>
+                            <td>Languages</td>
+                            <td>English</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div> <!-- End of section-card -->
+    </div> <!-- End of container -->
+
+</body>
+</html>
