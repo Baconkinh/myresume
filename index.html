@@ -3,471 +3,650 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atchara Dangdee | Resume Portfolio</title>
-    <!-- Importing a cute, rounded font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Atchara Dangdee | Playful Portfolio</title>
+    
+    <!-- Importing Fonts -->
+    <!-- 'Sniglet' for the brand/logo to match the cute "More Sugar" feel -->
+    <!-- 'Fredoka One' for headings -->
+    <!-- 'Poppins' for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;500;600;700&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-pastel: #fff0f5;      /* Soft Lavender Blush */
-            --card-white: #ffffff;
-            --text-main: #5c4b51;      /* Soft Brown/Grey */
-            --text-muted: #8b7d82;     /* Lighter Brown/Grey for secondary text */
-            --pastel-pink: #ffb7b2;    /* Soft Pink */
-            --pastel-blue: #a2d2ff;    /* Baby Blue */
-            --pastel-yellow: #fcf6bd;  /* Butter Yellow */
-            --pastel-green: #b5ead7;   /* Mint Green */
-            --pastel-purple: #cda434;  /* Accent color */
+            /* Colors from the PDF */
+            --pink-main: #FF90BB;
+            --blue-main: #81CAD6;
+            --bg-cream: #FDF9E0; /* Light cream background */
+            --text-dark: #333333;
+            --white: #FFFFFF;
+        }
+
+        /* Dark Mode Variables - Cute Midnight Purple Theme 🌙✨ */
+        [data-theme="dark"] {
+            --bg-cream: #251c33;     /* พื้นหลังสีม่วงเที่ยงคืนน่ารักๆ */
+            --text-dark: #ffe6f0;    /* ตัวหนังสือสีขาวอมชมพู */
+            --white: #342748;        /* สีกล่องการ์ด เป็นสีม่วงสว่างขึ้นมานิดนึง */
+            /* ลายจุดในโหมดมืด */
+            --dot-color1: #3b2d52;   
+            --dot-color2: #2e2340;
+        }
+        
+        /* Light Mode Dot Colors */
+        [data-theme="light"] {
+            --dot-color1: #fce8f0;
+            --dot-color2: #e3f5f8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            font-family: 'Nunito', sans-serif;
-            background-color: var(--bg-pastel);
-            /* Cute subtle polka dot pattern */
-            background-image: radial-gradient(var(--pastel-pink) 10%, transparent 11%), 
-                              radial-gradient(var(--pastel-blue) 10%, transparent 11%);
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            background-attachment: fixed;
-            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            
+            /* Polka dot pattern */
+            background-image: radial-gradient(var(--dot-color1) 10%, transparent 11%), 
+                              radial-gradient(var(--dot-color2) 10%, transparent 11%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            background-attachment: fixed;
         }
 
-        header {
-            /* Peach to Pink gradient */
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            padding: 4rem 2rem 3rem;
-            text-align: center;
-            border-bottom: 6px dashed #ffffff;
-            border-radius: 0 0 40px 40px;
-            box-shadow: 0 10px 20px rgba(255, 154, 158, 0.2);
-            position: relative;
-        }
-
-        h1 {
-            color: #ffffff;
-            margin: 0;
-            font-size: 3rem;
-            text-shadow: 3px 3px 0px rgba(255, 154, 158, 0.6);
+        h1, h2, h3 {
+            font-family: 'Fredoka One', cursive;
             letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #ffffff;
-            font-weight: 800;
-            margin-top: 0.8rem;
-            background: rgba(255, 255, 255, 0.3);
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 30px;
-        }
-        
-        .contact-info {
+        /* ----- NAVIGATION (Updated to match image) ----- */
+        nav {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-            color: #fff;
-            font-weight: 600;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-cream);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Soft shadow instead of dashed border */
+            transition: background-color 0.3s;
         }
-        
-        .contact-info div {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
+
+        .logo {
+            font-family: 'Sniglet', cursive; /* Using Sniglet to match "More Sugar" look */
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: var(--pink-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--blue-main);
+            font-weight: 800;
+            font-size: 1.3rem;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-main);
+            transform: translateY(-2px);
+        }
+
+        /* ----- HERO SECTION ----- */
+        .hero {
+            min-height: 80vh;
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-        
-        .contact-info a {
-            color: white;
-            border: none;
-        }
-        
-        .contact-info a:hover {
-            color: var(--text-main);
+            justify-content: center;
+            padding: 2rem 5%;
+            position: relative;
+            gap: 3rem;
         }
 
-        .container {
-            max-width: 900px;
-            margin: -2rem auto 2rem; /* Pull up over header slightly */
-            padding: 0 2rem;
-            position: relative;
+        .hero-content {
+            max-width: 600px;
             z-index: 10;
         }
 
-        .section-card {
-            background-color: var(--card-white);
-            border-radius: 28px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 12px 24px rgba(255, 183, 178, 0.25);
-            border: 4px solid var(--bg-pastel);
-            transition: all 0.3s ease;
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--pink-main);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 0px var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--blue-main);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--white);
+            box-shadow: 10px 10px 0px var(--pink-main);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* ----- SECTION GLOBALS ----- */
+        section {
+            padding: 5rem 5%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            color: var(--pink-main);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 15px;
+            background-color: var(--blue-main);
+            bottom: 5px;
+            left: -5%;
+            z-index: -1;
+            border-radius: 10px;
+            opacity: 0.5;
+        }
+
+        /* ----- EDUCATION & EXPERIENCE ----- */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--white);
+            border: 4px solid var(--blue-main);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            box-shadow: 8px 8px 0px var(--pink-main);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 13px 13px 0px var(--pink-main);
+        }
+
+        .timeline-item h3 {
+            color: var(--pink-main);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h4 {
+            color: var(--blue-main);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item p {
+            font-size: 1rem;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--bg-cream);
+            border: 4px solid var(--pink-main);
+            color: var(--blue-main);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
+        }
+
+        /* ----- SKILLS ----- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background-color: var(--blue-main);
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 3px solid var(--white);
+            box-shadow: 4px 4px 0px var(--pink-main);
+            font-family: 'Fredoka One', cursive;
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--pink-main);
+            box-shadow: 4px 4px 0px var(--blue-main);
+            transform: translateY(-3px);
+        }
+
+        /* ----- PROJECTS ----- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 5px solid var(--pink-main);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 10px 10px 0px var(--blue-main);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        
+        .project-card.blue {
+            border-color: var(--blue-main);
+            box-shadow: 10px 10px 0px var(--pink-main);
+        }
+        
+        .project-card.purple {
+            border-color: #d8b4e2;
+            box-shadow: 10px 10px 0px #bca0c4;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            background-color: var(--bg-cream);
+            object-fit: cover;
+            border-bottom: 5px solid var(--pink-main);
+            transition: border-color 0.3s;
+        }
+        
+        .project-card.blue .project-img {
+            border-bottom-color: var(--blue-main);
+        }
+        
+        .project-card.purple .project-img {
+            border-bottom-color: #d8b4e2;
+        }
+
+        .project-info {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-info h3 {
+            color: var(--blue-main);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-card.blue .project-info h3 {
+            color: var(--pink-main);
+        }
+        
+        .project-card.purple .project-info h3 {
+            color: #bca0c4;
+        }
+
+        .project-info p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--pink-main);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 3px solid var(--white);
+            box-shadow: 4px 4px 0px var(--text-dark);
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--text-dark);
+        }
+
+        .btn.blue {
+            background-color: var(--blue-main);
+        }
+        
+        .btn.purple {
+            background-color: #d8b4e2;
+        }
+
+        /* ----- CONTACT / LETS WORK TOGETHER ----- */
+        .contact-section {
+            background-color: var(--pink-main);
+            text-align: center;
+            padding: 6rem 5%;
+            color: #fff;
             position: relative;
             overflow: hidden;
         }
 
-        .section-card::before {
-            content: '✨';
-            position: absolute;
-            top: 15px;
-            right: 20px;
+        .contact-section h2 {
+            font-size: 5rem;
+            color: #fff;
+            text-shadow: 5px 5px 0px var(--blue-main);
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+        
+        .contact-details {
             font-size: 1.5rem;
-            opacity: 0.7;
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--pastel-pink);
-            box-shadow: 0 18px 35px rgba(255, 183, 178, 0.4);
-        }
-
-        h2 {
-            color: #ff8fab;
-            margin-top: 0;
-            font-size: 2rem;
+            font-weight: 600;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 2px dashed var(--pastel-pink);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
         }
 
-        h3 {
-            color: #72b2d6;
-            margin-bottom: 0.2rem;
-            font-size: 1.3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .date-badge {
-            font-size: 0.85rem;
-            background-color: var(--pastel-blue);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        .role {
-            font-size: 1rem;
-            color: #a09298;
-            margin-top: 0;
-            font-weight: 700;
-        }
-        
-        ul.cute-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        ul.cute-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 8px;
-        }
-        
-        ul.cute-list li::before {
-            content: '✿';
-            position: absolute;
-            left: 0;
-            color: var(--pastel-pink);
-            font-size: 1.2rem;
-            top: -2px;
-        }
-
-        .skills-category {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skills-category-title {
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        /* 3D Bouncy Tags */
-        .tag {
-            background-color: var(--pastel-pink);
+        .contact-details a, .contact-details p {
             color: #fff;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            box-shadow: 0 4px 0 rgba(255, 154, 158, 0.5);
-            transition: transform 0.1s, box-shadow 0.1s;
-            cursor: default;
-        }
-
-        .tag:active {
-            transform: translateY(4px);
-            box-shadow: 0 0 0 rgba(255, 154, 158, 0.5);
-        }
-
-        .tag.yellow {
-            background-color: var(--pastel-yellow);
-            color: #c4a123;
-            box-shadow: 0 4px 0 rgba(235, 203, 139, 0.5);
-        }
-
-        .tag.blue {
-            background-color: var(--pastel-blue);
-            color: #fff;
-            box-shadow: 0 4px 0 rgba(114, 178, 214, 0.5);
-        }
-        
-        .tag.green {
-            background-color: var(--pastel-green);
-            color: #4a9e80;
-            box-shadow: 0 4px 0 rgba(135, 204, 179, 0.5);
-        }
-        
-        .tag.purple {
-            background-color: #d8b4e2;
-            color: #fff;
-            box-shadow: 0 4px 0 #bca0c4;
-        }
-
-        a {
-            color: #ff8fab;
             text-decoration: none;
-            font-weight: 800;
-            border-bottom: 3px dashed #ff8fab;
-            transition: all 0.2s;
+            transition: color 0.2s;
         }
 
-        a:hover {
-            color: #a2d2ff;
-            border-bottom-color: #a2d2ff;
+        .contact-details a:hover {
+            color: var(--bg-cream);
         }
 
-        footer {
-            text-align: center;
-            padding: 2rem 0 5rem;
-            color: var(--text-main);
-            font-weight: 800;
-            font-size: 1.1rem;
+        /* Cute Headphone Cat SVG in Contact */
+        .contact-cat {
+            width: 250px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* ----- DARK MODE TOGGLE ----- */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--white);
+            border: 4px solid var(--text-dark);
+            color: var(--text-dark);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 5px 5px 0px var(--text-dark);
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--text-dark);
         }
         
+        .theme-toggle:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--text-dark);
+        }
+
+        /* ----- RESPONSIVE ----- */
         @media (max-width: 768px) {
-            h3 {
+            nav {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
+                gap: 1rem;
             }
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
             }
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 4rem;
+            }
+            .hero h1 { font-size: 3.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .contact-section h2 { font-size: 3.5rem; }
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
 
-    <header>
-        <h1>Atchara Dangdee</h1>
-        <p class="subtitle">🌸 Cybersecurity Analyst & Computer Engineering Student 🌸</p>
-        
-        <div class="contact-info">
-            <div><i class="fas fa-map-marker-alt"></i> Nakhonsawan, 60000</div>
-            <div><i class="fas fa-phone"></i> 064-362-0523</div>
-            <div><i class="fas fa-envelope"></i> myidisbacon2548@gmail.com</div>
-            <div><i class="fab fa-github"></i> <a href="https://github.com/Baconkinh" target="_blank" style="border:none;">github.com/Baconkinh</a></div>
+    <!-- NAVIGATION (Updated) -->
+    <nav>
+        <div class="logo">Atchara.D</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </div>
-    </header>
+    </nav>
 
-    <div class="container">
+    <!-- HERO SECTION (Updated with Image) -->
+    <section class="hero" id="about">
         
-        <section class="section-card" id="objective">
-            <h2>🎯 Job Objective</h2>
-            <ul class="cute-list">
-                <li>Detail-oriented student seeking a Cybersecurity Analyst role to utilize strong problem-solving skills in vulnerability management, packet analysis, and defensive security operations.</li>
-                <li>Seeking an entry-level position in Cybersecurity Analyst retailing.</li>
-            </ul>
-        </section>
+        <div class="hero-content">
+            <h1>I'M<br>ATCHARA</h1>
+            <p>Cybersecurity Analyst & Computer Engineering Student.<br>Detail-oriented student seeking a role to utilize strong problem-solving skills in vulnerability management, packet analysis, and defensive security operations.</p>
+        </div>
         
-        <section class="section-card" id="education">
-            <h2>🎓 Education</h2>
-            <h3>
-                <span>Bachelor of Computer Engineering</span>
-                <span class="date-badge">Expected 2027</span>
-            </h3>
-            <p class="role">Kasetsart University 📚</p>
-            <p>Aug 2016 - Oct 2019 (Previous Studies)</p>
-        </section>
-
-        <section class="section-card" id="experience">
-            <h2>🌷 Work Experience</h2>
-            
-            <h3>
-                <span>Teaching Assistant</span>
-                <span class="date-badge">2025 - Present</span>
-            </h3>
-            <p class="role">Essential Computer Tools and Skills | Kasetsart University, Sriracha, Chonburi 🏫</p>
-            <ul class="cute-list">
-                <li>Served as a teaching assistant for 3 consecutive semesters across 4 sections, acting as the primary liaison between professors and students.</li>
-                <li>Provided on-site IT support, troubleshooting technical issues and guiding students through software applications.</li>
-                <li>Managed administrative workflows, including exam proctoring and organizing course data efficiently using MS Excel, Word, and Google Sheets.</li>
-            </ul>
-
-            <h3 style="margin-top: 2rem;">
-                <span>Robotics Instructor</span>
-                <span class="date-badge">Sep 2024 - Jun 2025</span>
-            </h3>
-            <p class="role">Quantummodus - Sriracha, Chonburi 🤖</p>
-            <ul class="cute-list">
-                <li>Instructed children in fundamental robotics and programming concepts using LEGO education boards.</li>
-                <li>Designed and guided hands-on activities to teach basic movement logic (e.g., forward/backward commands), simplifying complex coding concepts for young learners.</li>
-                <li>Fostered logical thinking, problem-solving skills, and a basic understanding of hardware-software integration.</li>
-            </ul>
-        </section>
-
-        <section class="section-card" id="skills">
-            <h2>🎨 Technical Skills</h2>
-            
-            <div class="skills-category">
-                <div class="skills-category-title">Soft Skills</div>
-                <div class="skills-grid">
-                    <span class="tag">Leadership</span>
-                    <span class="tag">Problem Solving</span>
-                    <span class="tag">Logical Thinking</span>
-                    <span class="tag">Team Collaboration</span>
-                </div>
-            </div>
-            
-            <div class="skills-category">
-                <div class="skills-category-title">Programming & Backend</div>
-                <div class="skills-grid">
-                    <span class="tag blue">C++</span>
-                    <span class="tag blue">Python</span>
-                    <span class="tag blue">Java</span>
-                    <span class="tag blue">JavaScript</span>
-                    <span class="tag blue">Flask</span>
-                </div>
-            </div>
-            
-            <div class="skills-category">
-                <div class="skills-category-title">Network & Security</div>
-                <div class="skills-grid">
-                    <span class="tag purple">Wireshark</span>
-                    <span class="tag purple">GNS3</span>
-                    <span class="tag purple">Cisco CLI</span>
-                    <span class="tag purple">OWASP ZAP</span>
-                    <span class="tag purple">Packet Analysis</span>
-                </div>
-            </div>
-            
-            <div class="skills-category">
-                <div class="skills-category-title">Databases & Tools</div>
-                <div class="skills-grid">
-                    <span class="tag green">MySQL</span>
-                    <span class="tag green">MongoDB</span>
-                    <span class="tag green">MariaDB</span>
-                    <span class="tag yellow">Microsoft Office</span>
-                    <span class="tag yellow">Canva</span>
-                    <span class="tag yellow">Figma</span>
-                    <span class="tag yellow">Streamlit</span>
-                </div>
-            </div>
-            
-            <div class="skills-category">
-                <div class="skills-category-title">Languages</div>
-                <div class="skills-grid">
-                    <span class="tag">English (Fair command)</span>
-                </div>
-            </div>
-        </section>
+        <!-- User Image (แก้ไข Path ตรงนี้) -->
+        <img src="images/dd.png" alt="Atchara" class="hero-image" onerror="this.src='square.png'">
         
-        <section class="section-card" id="achievements">
-            <h2>🏆 Achievements</h2>
-            
-            <h3>Academic Achievements</h3>
-            <ul class="cute-list">
-                <li>Certified Unity Basic: Game Development Fundamentals (2026)</li>
-                <li>Basic Web Security Training - SECPlayground (2024)</li>
-            </ul>
-            
-            <h3 style="margin-top: 1.5rem;">Awards & Recognitions</h3>
-            <ul class="cute-list">
-                <li>National Finalist, International Collegiate Programming Contest (ICPC) 2026</li>
-                <li>Participant, BangMod Hackathon (2024) 🚀</li>
-            </ul>
-        </section>
+    </section>
 
-        <section class="section-card" id="projects">
-            <h2>🎮 Projects</h2>
+    <!-- EDUCATION & EXPERIENCE -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Teaching Assistant</h3>
+                <h4>Kasetsart University, Sriracha (2025 - Present)</h4>
+                <p>Served as a teaching assistant for 3 consecutive semesters, acting as the primary liaison. Provided on-site IT support and managed administrative workflows using MS Office.</p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;">
-                
-                <!-- Project 1: Tournament of 5 Hearts -->
-                <div style="display: flex; flex-direction: column; gap: 15px; align-items: center; text-align: center; background: #fff9fa; padding: 20px; border-radius: 20px; border: 2px dashed var(--pastel-pink);">
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-robot"></i></div>
+                <h3>Robotics Instructor</h3>
+                <h4>Quantummodus - Sriracha (Sep 2024 - Jun 2025)</h4>
+                <p>Instructed children in fundamental robotics and programming concepts using LEGO education boards. Designed hands-on activities to foster logical thinking and problem-solving skills.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 4rem;">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item" style="border-color: var(--pink-main); box-shadow: 8px 8px 0px var(--blue-main);">
+                <div class="timeline-icon" style="border-color: var(--blue-main); color: var(--pink-main);"><i class="fas fa-graduation-cap"></i></div>
+                <h3 style="color: var(--blue-main);">Bachelor of Computer Engineering</h3>
+                <h4 style="color: var(--pink-main);">Kasetsart University (Expected 2027)</h4>
+                <p>Currently pursuing a degree with a strong focus on cybersecurity, software development, and network architecture.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" style="background-color: var(--white); border-top: 4px dashed var(--blue-main); border-bottom: 4px dashed var(--blue-main);">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-tag">Cybersecurity</div>
+            <div class="skill-tag" style="background-color: var(--pink-main); box-shadow: 4px 4px 0px var(--blue-main);">Python</div>
+            <div class="skill-tag">Java</div>
+            <div class="skill-tag" style="background-color: var(--pink-main); box-shadow: 4px 4px 0px var(--blue-main);">C++</div>
+            <div class="skill-tag">Wireshark</div>
+            <div class="skill-tag" style="background-color: var(--pink-main); box-shadow: 4px 4px 0px var(--blue-main);">Packet Analysis</div>
+            <div class="skill-tag">OWASP ZAP</div>
+            <div class="skill-tag" style="background-color: var(--pink-main); box-shadow: 4px 4px 0px var(--blue-main);">Flask</div>
+            <div class="skill-tag">MySQL</div>
+            <div class="skill-tag" style="background-color: var(--pink-main); box-shadow: 4px 4px 0px var(--blue-main);">Problem Solving</div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="real.jpg" alt="Tournament of 5 Hearts" class="project-img" onerror="this.src='https://placehold.co/600x400/FDF9E0/FF90BB?text=Tournament+of+5+Hearts&font=poppins'">
+                <div class="project-info">
                     <h3>Tournament of 5 Hearts</h3>
-                    <p style="font-size: 0.95rem; margin: 0;">A Java-based turn-based RPG game built using the FXGL engine. Features custom character creation, engaging combat mechanics, and a charming pixel-art aesthetic.</p>
-                    
-                    <div style="border-radius: 15px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); width: 100%; aspect-ratio: 16/9; display: flex; background: #eee;">
-                        <img src="real.jpg" alt="Tournament of 5 Hearts Cover" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.src='https://placehold.co/800x450/2b2b2b/ffffff?text=Tournament+of+5+Hearts'">
-                    </div>
-                    
-                    <!-- สังเกตตรง href="project_detail.html" นี่คือจุดที่ทำให้มันลิงก์ไปยังไฟล์หน้ารายละเอียดเกมครับ -->
-                    <a href="project_detail.html" target="_blank" style="display: inline-block; background-color: var(--pastel-pink); color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; box-shadow: 0 4px 10px rgba(255, 183, 178, 0.5); transition: transform 0.2s, box-shadow 0.2s; margin-top: auto;">
-                        <i class="fas fa-gamepad" style="margin-right: 8px;"></i> View Project Details
-                    </a>
+                    <p>A Java-based turn-based RPG game built using the FXGL engine. Features custom character creation and a charming pixel-art aesthetic.</p>
+                    <a href="project_detail.html" target="_blank" class="btn">Explore Project</a>
                 </div>
-
-                <!-- Project 2: KU FixIt -->
-                <div style="display: flex; flex-direction: column; gap: 15px; align-items: center; text-align: center; background: #eef7fc; padding: 20px; border-radius: 20px; border: 2px dashed var(--pastel-blue);">
-                    <h3 style="color: #72b2d6;">KU FixIt</h3>
-                    <p style="font-size: 0.95rem; margin: 0;">A web-based dormitory maintenance reporting system built with Python, Flask, and SQLite. Features role-based access for students, technicians, and admins.</p>
-                    
-                    <div style="border-radius: 15px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); width: 100%; aspect-ratio: 16/9; display: flex; background: #eee;">
-                        <img src="https://placehold.co/800x450/cce3f5/72b2d6?text=KU+FixIt+System" alt="KU FixIt Cover" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    
-                    <a href="project_kufixit.html" target="_blank" style="display: inline-block; background-color: var(--pastel-blue); color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; box-shadow: 0 4px 10px rgba(162, 210, 255, 0.5); transition: transform 0.2s, box-shadow 0.2s; margin-top: auto;">
-                        <i class="fas fa-wrench" style="margin-right: 8px;"></i> View Project Details
-                    </a>
-                </div>
-
-                <!-- Project 3: Midnight (Obby Game) -->
-                <div style="display: flex; flex-direction: column; gap: 15px; align-items: center; text-align: center; background: #f3e8fd; padding: 20px; border-radius: 20px; border: 2px dashed #d8b4e2;">
-                    <h3 style="color: #bca0c4;">Midnight (Obby)</h3>
-                    <p style="font-size: 0.95rem; margin: 0;">A thrilling 3D obstacle course (Obby) game developed in Unity. Navigate through challenging platforms under the mysterious midnight sky.</p>
-                    
-                    <div style="border-radius: 15px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.1); width: 100%; aspect-ratio: 16/9; display: flex; background: #2c1b3d;">
-                        <img src="https://placehold.co/800x450/2c1b3d/d8b4e2?text=Midnight+Obby+Game" alt="Midnight Cover" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    
-                    <a href="project_midnight.html" target="_blank" style="display: inline-block; background-color: #d8b4e2; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; box-shadow: 0 4px 10px rgba(216, 180, 226, 0.5); transition: transform 0.2s, box-shadow 0.2s; margin-top: auto;">
-                        <i class="fas fa-moon" style="margin-right: 8px;"></i> View Project Details
-                    </a>
-                </div>
-
             </div>
-        </section>
 
-    </div>
+            <!-- Project 2 -->
+            <div class="project-card blue">
+                <img src="https://placehold.co/600x400/FDF9E0/81CAD6?text=KU+FixIt+System&font=poppins" alt="KU FixIt" class="project-img">
+                <div class="project-info">
+                    <h3>KU FixIt</h3>
+                    <p>A web-based dormitory maintenance reporting system built with Python, Flask, and SQLite. Features role-based access for students and admins.</p>
+                    <a href="project_kufixit.html" target="_blank" class="btn blue">Explore Project</a>
+                </div>
+            </div>
 
-    <footer>
-        <p>Made with 💖 | Check out my <a href="https://github.com/Baconkinh" target="_blank">GitHub</a></p>
-    </footer>
+            <!-- Project 3 -->
+            <div class="project-card purple">
+                <img src="https://placehold.co/600x400/2c1b3d/d8b4e2?text=Midnight+(Obby)&font=poppins" alt="Midnight Game" class="project-img">
+                <div class="project-info">
+                    <h3>Midnight (Obby)</h3>
+                    <p>A thrilling 3D obstacle course game developed in Unity. Navigate through challenging platforms under the mysterious midnight sky.</p>
+                    <a href="project_midnight.html" target="_blank" class="btn purple">Explore Project</a>
+                </div>
+            </div>
 
+        </div>
+    </section>
+
+    <!-- CONTACT / LETS WORK TOGETHER -->
+    <section class="contact-section" id="contact">
+        <h2>LETS WORK<br>TOGETHER</h2>
+        
+        <!-- SVG Headphone Cat (Mimicking the last page of PDF) -->
+        <svg class="contact-cat" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+            <!-- Music Notes -->
+            <path d="M30,80 Q20,70 30,50 L50,45 L50,85 C45,95 25,95 30,80 Z" fill="#81CAD6"/>
+            <path d="M170,50 L190,40 L190,80 C185,90 165,90 170,80 Q160,70 170,50 Z" fill="#81CAD6"/>
+            
+            <!-- Headphones Base -->
+            <path d="M60,90 C60,40 140,40 140,90" fill="none" stroke="#81CAD6" stroke-width="12" stroke-linecap="round"/>
+            <rect x="50" y="80" width="20" height="40" rx="10" fill="#81CAD6"/>
+            <rect x="130" y="80" width="20" height="40" rx="10" fill="#81CAD6"/>
+            
+            <!-- Cat Head (ปรับ fill ให้เปลี่ยนสีตามธีม) -->
+            <path d="M70,110 L70,50 L90,65 L110,65 L130,50 L130,110 C130,140 70,140 70,110 Z" fill="var(--white)" stroke="#81CAD6" stroke-width="6" stroke-linejoin="round"/>
+            <!-- Eyes -->
+            <ellipse cx="90" cy="90" rx="4" ry="8" fill="#81CAD6"/>
+            <ellipse cx="110" cy="90" rx="4" ry="8" fill="#81CAD6"/>
+            <!-- Mouth -->
+            <path d="M95,105 Q100,100 105,105" fill="none" stroke="#81CAD6" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+
+        <div class="contact-details">
+            <a href="tel:0643620523"><i class="fas fa-phone-alt"></i> 064-362-0523</a>
+            <a href="mailto:myidisbacon2548@gmail.com"><i class="fas fa-envelope"></i> myidisbacon2548@gmail.com</a>
+            <a href="https://github.com/Baconkinh" target="_blank"><i class="fab fa-github"></i> github.com/Baconkinh</a>
+            <p><i class="fas fa-map-marker-alt"></i> Nakhonsawan, 60000</p>
+        </div>
+    </section>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        // Dark Mode Logic
+        const toggleBtn = document.getElementById('themeToggle');
+        const icon = toggleBtn.querySelector('i');
+        const body = document.body;
+
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
 </body>
 </html>

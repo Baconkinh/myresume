@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KU FixIt - Project Details</title>
+    <!-- Fonts: Nunito for English, Kanit for Thai -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Pastel Blue Theme Variables */
+            --bg-pastel-blue: #eef7fc;   /* สีฟ้าอ่อนพื้นหลัง */
+            --dot-color: #cce3f5;        /* สีฟ้าสว่างสำหรับลายจุด */
+            --header-grad-1: #a1c4fd;    /* สีเริ่มต้นของ Gradient */
+            --header-grad-2: #c2e9fb;    /* สีสิ้นสุดของ Gradient */
+            
+            --card-white: #ffffff;
+            --text-main: #5c4b51;        /* สีน้ำตาลอมเทาสำหรับตัวหนังสือ */
+            --text-muted: #8b7d82;
+            
+            --accent-blue: #72b2d6;      /* สีฟ้าเข้มขึ้นสำหรับปุ่มและหัวข้อ */
+            --accent-pink: #ffb7b2;      /* สีชมพูพาสเทลสำหรับตกแต่ง */
+            --accent-yellow: #fcf6bd;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Kanit', 'Nunito', sans-serif;
+            background-color: var(--bg-pastel-blue);
+            /* ลายจุดสุดน่ารัก */
+            background-image: radial-gradient(var(--dot-color) 10%, transparent 11%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--header-grad-1) 0%, var(--header-grad-2) 100%);
+            padding: 2rem 2rem 6rem;
+            text-align: center;
+            border-bottom: 6px dashed #ffffff;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 10px 20px rgba(161, 196, 253, 0.2);
+            position: relative;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0 rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-btn:hover {
+            background: #ffffff;
+            color: var(--accent-blue);
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -4rem auto 3rem; /* ดึงกล่องขึ้นไปทับ Header */
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-card {
+            background-color: var(--card-white);
+            border-radius: 28px;
+            padding: 2.5rem;
+            box-shadow: 0 12px 24px rgba(161, 196, 253, 0.25);
+            border: 4px solid var(--bg-pastel-blue);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .section-card::before {
+            content: '☁️';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .section-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 18px 35px rgba(161, 196, 253, 0.4);
+        }
+
+        .project-title {
+            color: var(--accent-blue);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .project-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .action-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: var(--bg-pastel-blue);
+            border-radius: 20px;
+            border: 2px dashed var(--accent-blue);
+        }
+
+        .status-text {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .action-btn {
+            background-color: var(--accent-blue);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 0 #5a94b5;
+            transition: transform 0.1s, box-shadow 0.1s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .action-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 #5a94b5;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 15px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .gallery-main {
+            grid-column: 1;
+            grid-row: 1 / span 3;
+        }
+
+        .gallery-side {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid var(--dot-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, border-color 0.2s;
+            background-color: #f8f9fa;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-pink);
+            z-index: 2;
+            position: relative;
+        }
+
+        .description-area h2 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px dashed var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .cute-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .cute-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        
+        .cute-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+            top: 2px;
+        }
+
+        .metadata-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .metadata-table td {
+            padding: 12px 20px;
+            background-color: #fcfcfc;
+        }
+
+        .metadata-table tr td:first-child {
+            color: var(--text-muted);
+            width: 35%;
+            border-radius: 15px 0 0 15px;
+            border: 2px solid var(--bg-pastel-blue);
+            border-right: none;
+            font-weight: 600;
+        }
+        
+        .metadata-table tr td:last-child {
+            border-radius: 0 15px 15px 0;
+            border: 2px solid var(--bg-pastel-blue);
+            border-left: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-main {
+                grid-row: auto;
+            }
+            .project-title {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+            .section-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> กลับหน้าหลัก</a>
+    </header>
+
+    <div class="container">
+        <div class="section-card">
+            
+            <!-- Project Title -->
+            <h1 class="project-title">KU FixIt</h1>
+            <p class="project-subtitle">ระบบแจ้งซ่อมหอพักนักศึกษา มหาวิทยาลัยเกษตรศาสตร์ 🛠️</p>
+            
+            <!-- Action Section (สไตล์ปุ่มโหลดคล้าย itch.io แต่เป็นลิงก์ไป Github) -->
+            <div class="action-section">
+                <div class="status-text">💻 พัฒนาด้วย Python Flask & Web Technologies</div>
+                <div>
+                    <a href="https://github.com/BoBoXbank/KU_FixIt.git" target="_blank" class="action-btn">
+                        <i class="fab fa-github"></i> View Source Code
+                    </a>
+                </div>
+            </div>
+
+            <!-- สังเกต: ใช้ Placeholder สีพาสเทลเพื่อจำลองภาพหน้าจอจาก Figma ที่คุณส่งมา -->
+            <div class="gallery-grid">
+                <!-- Large main image (User Dashboard) -->
+                <div class="gallery-main">
+                    <img src="https://placehold.co/600x800/eef7fc/72b2d6?text=User+Dashboard+%26+Report+Form" alt="User Dashboard" class="screenshot" style="height: 100%;">
+                </div>
+                
+                <!-- Stacked smaller images (Admin, Tech, Login) -->
+                <div class="gallery-side">
+                    <img src="https://placehold.co/400x250/fcf6bd/72b2d6?text=Admin+Panel+%26+Dashboard" alt="Admin Panel" class="screenshot">
+                    <img src="https://placehold.co/400x250/ffb7b2/ffffff?text=Technician+Work+Status" alt="Technician View" class="screenshot">
+                    <img src="https://placehold.co/400x250/b5ead7/5c4b51?text=Login+%26+Register" alt="Login Screen" class="screenshot">
+                </div>
+            </div>
+
+            <div class="description-area">
+                <h2><i class="fas fa-info-circle"></i> เกี่ยวกับโปรเจกต์</h2>
+                <p>
+                    <strong>KU FixIt</strong> เป็นเว็บแอปพลิเคชันที่ออกแบบมาเพื่อแก้ไขปัญหาความล่าช้าและความยุ่งยากในการแจ้งซ่อมแซมสาธารณูปโภคภายในหอพักนักศึกษา 
+                    ระบบนี้ช่วยให้นิสิตสามารถส่งคำร้องแจ้งซ่อม (เช่น ประปา, ไฟฟ้า, แอร์) ได้อย่างง่ายดาย พร้อมทั้งสามารถติดตามสถานะการดำเนินงานได้แบบ Real-time
+                </p>
+                <p>
+                    ตัวระบบถูกออกแบบ UI/UX ผ่าน Figma ให้มีความใช้งานง่าย สบายตา และแบ่งสิทธิการใช้งานออกเป็น 3 ระดับ เพื่อให้การบริหารจัดการงานซ่อมบำรุงของทางหอพักเป็นไปอย่างมีประสิทธิภาพสูงสุด
+                </p>
+
+                <h2><i class="fas fa-star"></i> ฟีเจอร์หลัก (Key Features)</h2>
+                <ul class="cute-list">
+                    <li><strong>Role-Based Access Control:</strong> ระบบแบ่งผู้ใช้งานเป็น 3 ระดับ (นิสิตผู้แจ้ง, ช่างซ่อม, ผู้ดูแลระบบ/Admin)</li>
+                    <li><strong>Ticket System:</strong> สร้างใบแจ้งซ่อม ระบุหมวดหมู่ปัญหา อาคาร ห้อง และแนบรูปภาพประกอบได้</li>
+                    <li><strong>Status Tracking:</strong> ติดตามสถานะงานซ่อมแบบไทม์ไลน์ (รอดำเนินการ -> กำลังซ่อม -> เสร็จสิ้น)</li>
+                    <li><strong>Admin Dashboard:</strong> หน้าสรุปสถิติงานซ่อมทั้งหมดสำหรับผู้ดูแล และระบบเลื่อนสถานะ/จัดการผู้ใช้</li>
+                    <li><strong>Responsive Design:</strong> รองรับการใช้งานทั้งบนคอมพิวเตอร์และโทรศัพท์มือถือ</li>
+                </ul>
+
+                <table class="metadata-table">
+                    <tbody>
+                        <tr>
+                            <td>👩‍💻 ผู้พัฒนา</td>
+                            <td>Atchara Dangdee</td>
+                        </tr>
+                        <tr>
+                            <td>⚙️ Backend Tech</td>
+                            <td>Python, Flask Framework</td>
+                        </tr>
+                        <tr>
+                            <td>🎨 Frontend Tech</td>
+                            <td>HTML, CSS, Jinja2 Templates</td>
+                        </tr>
+                        <tr>
+                            <td>🗄️ Database</td>
+                            <td>SQLite / Database Management</td>
+                        </tr>
+                        <tr>
+                            <td>📌 ประเภทโปรเจกต์</td>
+                            <td>Web Application (Academic Project)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div> <!-- End of section-card -->
+    </div> <!-- End of container -->
+
+</body>
+</html>
