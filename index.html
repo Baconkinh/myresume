@@ -6,9 +6,6 @@
     <title>Atchara Dangdee | Playful Portfolio</title>
     
     <!-- Importing Fonts -->
-    <!-- 'Sniglet' for the brand/logo to match the cute "More Sugar" feel -->
-    <!-- 'Fredoka One' for headings -->
-    <!-- 'Poppins' for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;500;600;700&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -22,12 +19,12 @@
             --white: #FFFFFF;
         }
 
-        /* Dark Mode Variables - Cute Midnight Purple Theme 🌙✨ */
+        /* Dark Mode Variables - Dreamy Midnight 🌙✨ */
         [data-theme="dark"] {
-            --bg-cream: #251c33;     /* พื้นหลังสีม่วงเที่ยงคืนน่ารักๆ */
-            --text-dark: #ffe6f0;    /* ตัวหนังสือสีขาวอมชมพู */
-            --white: #342748;        /* สีกล่องการ์ด เป็นสีม่วงสว่างขึ้นมานิดนึง */
-            /* ลายจุดในโหมดมืด */
+            --bg-cream: #251c33;     /* Deep dreamy purple */
+            --text-dark: #ffe6f0;    /* Pinkish white text */
+            --white: #342748;        /* Card backgrounds (lighter purple) */
+            /* Dots in dark mode */
             --dot-color1: #3b2d52;   
             --dot-color2: #2e2340;
         }
@@ -58,6 +55,13 @@
             background-size: 40px 40px;
             background-position: 0 0, 20px 20px;
             background-attachment: fixed;
+            
+            /* Custom Cursors (using web standard images) */
+            cursor: url('https://cdn-icons-png.flaticon.com/32/1828/1828884.png'), auto; /* Default star cursor */
+        }
+
+        a, button, .tag, .section-card, .theme-toggle {
+            cursor: url('https://cdn-icons-png.flaticon.com/32/833/833472.png'), pointer; /* Heart pointer */
         }
 
         h1, h2, h3 {
@@ -65,7 +69,7 @@
             letter-spacing: 1px;
         }
 
-        /* ----- NAVIGATION (Updated to match image) ----- */
+        /* ----- NAVIGATION ----- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -75,12 +79,12 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Soft shadow instead of dashed border */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: background-color 0.3s;
         }
 
         .logo {
-            font-family: 'Sniglet', cursive; /* Using Sniglet to match "More Sugar" look */
+            font-family: 'Sniglet', cursive; 
             font-weight: 800;
             font-size: 2.8rem;
             color: var(--pink-main);
@@ -444,31 +448,22 @@
             box-shadow: 2px 2px 0px var(--text-dark);
         }
 
-        /* ----- RESPONSIVE ----- */
         @media (max-width: 768px) {
-            nav {
+            h3 {
                 flex-direction: column;
-                gap: 1rem;
+                align-items: flex-start;
+                gap: 5px;
             }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
             }
-            .hero {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding-top: 4rem;
-            }
-            .hero h1 { font-size: 3.5rem; }
-            .section-title { font-size: 2.5rem; }
-            .contact-section h2 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body data-theme="light">
 
-    <!-- NAVIGATION (Updated) -->
+    <!-- NAVIGATION -->
     <nav>
         <div class="logo">Atchara.D</div>
         <div class="nav-links">
@@ -479,7 +474,7 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (Updated with Image) -->
+    <!-- HERO SECTION -->
     <section class="hero" id="about">
         
         <div class="hero-content">
@@ -487,8 +482,7 @@
             <p>Cybersecurity Analyst & Computer Engineering Student.<br>Detail-oriented student seeking a role to utilize strong problem-solving skills in vulnerability management, packet analysis, and defensive security operations.</p>
         </div>
         
-        <!-- User Image (แก้ไข Path ตรงนี้) -->
-        <img src="images/dd.png" alt="Atchara" class="hero-image" onerror="this.src='square.png'">
+        <img src="images/dd.png" alt="Atchara" class="hero-image" onerror="this.src='https://placehold.co/300x300/FF90BB/FFFFFF?text=A'">
         
     </section>
 
@@ -548,7 +542,7 @@
             
             <!-- Project 1 -->
             <div class="project-card">
-                <img src="real.jpg" alt="Tournament of 5 Hearts" class="project-img" onerror="this.src='https://placehold.co/600x400/FDF9E0/FF90BB?text=Tournament+of+5+Hearts&font=poppins'">
+                <img src="images/real.jpg" alt="Tournament of 5 Hearts" class="project-img" onerror="this.src='https://placehold.co/600x400/FDF9E0/FF90BB?text=Tournament+of+5+Hearts&font=poppins'">
                 <div class="project-info">
                     <h3>Tournament of 5 Hearts</h3>
                     <p>A Java-based turn-based RPG game built using the FXGL engine. Features custom character creation and a charming pixel-art aesthetic.</p>
@@ -583,23 +577,15 @@
     <section class="contact-section" id="contact">
         <h2>LETS WORK<br>TOGETHER</h2>
         
-        <!-- SVG Headphone Cat (Mimicking the last page of PDF) -->
         <svg class="contact-cat" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
-            <!-- Music Notes -->
             <path d="M30,80 Q20,70 30,50 L50,45 L50,85 C45,95 25,95 30,80 Z" fill="#81CAD6"/>
             <path d="M170,50 L190,40 L190,80 C185,90 165,90 170,80 Q160,70 170,50 Z" fill="#81CAD6"/>
-            
-            <!-- Headphones Base -->
             <path d="M60,90 C60,40 140,40 140,90" fill="none" stroke="#81CAD6" stroke-width="12" stroke-linecap="round"/>
             <rect x="50" y="80" width="20" height="40" rx="10" fill="#81CAD6"/>
             <rect x="130" y="80" width="20" height="40" rx="10" fill="#81CAD6"/>
-            
-            <!-- Cat Head (ปรับ fill ให้เปลี่ยนสีตามธีม) -->
             <path d="M70,110 L70,50 L90,65 L110,65 L130,50 L130,110 C130,140 70,140 70,110 Z" fill="var(--white)" stroke="#81CAD6" stroke-width="6" stroke-linejoin="round"/>
-            <!-- Eyes -->
             <ellipse cx="90" cy="90" rx="4" ry="8" fill="#81CAD6"/>
             <ellipse cx="110" cy="90" rx="4" ry="8" fill="#81CAD6"/>
-            <!-- Mouth -->
             <path d="M95,105 Q100,100 105,105" fill="none" stroke="#81CAD6" stroke-width="4" stroke-linecap="round"/>
         </svg>
 
@@ -622,7 +608,6 @@
         const icon = toggleBtn.querySelector('i');
         const body = document.body;
 
-        // Check for saved theme
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             body.setAttribute('data-theme', savedTheme);
@@ -647,6 +632,15 @@
                 icon.classList.add('fa-moon');
             }
         }
+    </script>
+    
+    <!-- Fairy Dust Cursor Effect -->
+    <script type="module">
+        import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+        
+        new fairyDustCursor({
+            colors: ["#FF90BB", "#81CAD6", "#fcf6bd", "#d8b4e2", "#b5ead7"], // Pastel colors!
+        });
     </script>
 </body>
 </html>
